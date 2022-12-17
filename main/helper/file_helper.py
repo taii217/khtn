@@ -1,7 +1,3 @@
-import hashlib
-import random
-import sys
-
 def read_file(namefile):
     with open (namefile,'r') as readfile:
         d = readfile.read().splitlines()

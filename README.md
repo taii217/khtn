@@ -22,5 +22,21 @@ tạo folder mới .zip có password
 
 # virtual venv
 
+
+# launch
+
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current Project",
+            "type": "python",
+            "request": "launch",
+            "program": "start.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}
  
 
