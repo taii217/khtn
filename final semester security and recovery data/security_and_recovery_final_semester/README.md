@@ -6,7 +6,6 @@
 
 1/ Tài
 
-
 2/ file 1 : line 1 3 5 7 9 ...
    file 2 : line 0 2 4 6 8 ...
 
@@ -20,6 +19,8 @@ tạo folder mới .zip có password
 
 6. G:/ defaul dir
 
+
+# virtual venv
 
  
 
