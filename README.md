@@ -4,20 +4,17 @@
 
 # plan demo 1 
 
-1/ Tài
+1/ Tài // finished
 
-2/ file 1 : line 1 3 5 7 9 ...
+2/ file 1 : line 1 3 5 7 9 ... // finished
    file 2 : line 0 2 4 6 8 ...
 
-3. ẩn file : oke
 
-4. obfurcasted code : oke
+3. ẩn file  // finished
 
-tạo folder mới .zip có password
+4. obfurcasted code : wait lastime
 
-5. oke
-
-6. G:/ defaul dir
+& tạo folder mới .zip có password // finished
 
 
 # virtual venv
