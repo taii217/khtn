@@ -20,15 +20,9 @@ def write_file_split(path1, path2, data, is_hidden=False):
         file1 = open(os.path.expanduser(path1), "w")
         file2 = open(os.path.expanduser(path2), "w")
     except Exception as e:
-        # os.remove("demofile.txt")
-        # os.remove("demofile.txt")
-        # try:
-        #     file1 = open(os.path.expanduser(path1), "w")
-        #     file2 = open(os.path.expanduser(path2), "w")
-        # except Exception as e:
-        return False, 'File đã ẩn và tồn tại, không thể ghi'
+        return False, 'File đã ẩn và tồn tại, không thể ghi đè, vui lòng xoá file cũ'
 
-    if is_hidden:
+    if is_hidden: # read_only, no write, no delete
         os.system(f"attrib +h {path1}")
         os.system(f"attrib +h {path2}")
 
@@ -42,8 +36,6 @@ def write_file_split(path1, path2, data, is_hidden=False):
 
 
 def merge_file(path1, path2) -> list:
-    data = []
-
     with open(path1, 'r') as readfile:
         d1 = readfile.read().splitlines()
 

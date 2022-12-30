@@ -1,8 +1,8 @@
 import random
-
+from settings import MIN_SALT, MAX_SALT
 
 def gen_salt(arr):
-    salt_len = random.randint(200, 400)
+    salt_len = random.randint(MIN_SALT, MAX_SALT)
     salt = []
     for _ in range(salt_len):
         index_table = random.randint(0, len(arr)-2)

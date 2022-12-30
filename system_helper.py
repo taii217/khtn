@@ -1,7 +1,9 @@
 from zipfile import ZipFile
-from system_helper import encryption_list, decryption_list
 from main.helper.file_helper import merge_file, read_file, write_file_split, write_file
 from main.security.hill_cipher import hill_cipher
+import os
+
+from main.smtp.smtp import check_otp
 
 def encryption_list(hill: hill_cipher, data):
     ciphers = []
@@ -19,11 +21,11 @@ def decryption_list(hill, data):
     return plains
 
 
-def encrypt_file(password, path_plaint, is_hidden: bool = False):
+def encrypt_file(email, password, path_plaint, is_hidden: bool = False):
     hill = hill_cipher(password)
 
-    data = read_file(path_plaint)
-    path = path_plaint.split('/')
+    data = [email] + read_file(path_plaint)
+    path = path_plaint.split(os.sep)
     file_name = path.pop(-1).split('.')[-2]
     direction = "/".join(path)
 
@@ -32,35 +34,29 @@ def encrypt_file(password, path_plaint, is_hidden: bool = False):
     path_1 = f'{direction}/{file_name}_encryption_1.txt'
     path_2 = f'{direction}/{file_name}_encryption_2.txt'
 
-    sucess, msg = write_file_split(
-        path1=path_1, path2=path_2, data=ciphers, is_hidden=is_hidden)
-    if not sucess:
-        return msg
-
-    with ZipFile(f'{file_name}_1.zip', 'w') as zip1:
-        zip1.write(path_1)
-
-    with ZipFile(f'{file_name}_2.zip', 'w') as zip1:
-        zip1.write(path_2)
-
-    return 'Thành công'
+    sucess, msg = write_file_split(path1=path_1, path2=path_2, data=ciphers, is_hidden=is_hidden)
+    print('path 1: ', path_1)
+    print('path 1: ', path_2)
+    return 'Mã hoá thành công' if sucess else msg
 
 
 def decrypt_file(password, path_1, path_2):
     hill = hill_cipher(password)
     data_raw = merge_file(path1=path_1, path2=path_2)
+
+    email = hill.decrypt(data_raw.pop(0))
+    if not check_otp(email):
+        return 'otp thất bại'
+
+    ###
+    print('Đang giải nén...')
+
     plains = decryption_list(hill, data_raw)
 
-    path = path_1.split('/')
+    path = path_1.split(os.sep)
     file_name = path.pop(-1).split('_')[-3]
     direction = "/".join(path)
-
     write_file(f"{direction}/{file_name}_sucess.txt", plains)
-
-
-path_plaint = "C:/Users/taiin/OneDrive/computer/test/plaint.txt"
-
-# print('data: ', data)
-# print('ciphers: ', ciphers)
-# print('data_raw: ', data_raw)
-# print('plains: ', plains)
+    ###
+    return 'Giải nén thành công !!'
+        
