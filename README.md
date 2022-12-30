@@ -1,7 +1,17 @@
 # security_and_recovery_final_semester
-19120641 - 19120694
+## Thành Viên
+* 19120641 : Nguyễn Đức Phát Tài
+* 19120694 : Phan Lý Châu Trinh
 
-# launch
+## Đề Tài
+* 
+* 
+*
+
+
+
+## Launch
+```
 {
     "version": "0.2.0",
     "configurations": [
@@ -15,16 +25,25 @@
         }
     ]
 }
+```
  
-#   .env
-$   copy .env.default to .env
-$
-#   obfurcasted code
-$   using https://pyarmor.readthedocs.io/en/latest/ 
-$   ```pip install pyarmor```
-$   ```pyarmor init --entry=start.py```
-$   ```pyarmor build```
-$   # run obfuscated code
-$   ```cd obfuscate```
-$   run ```start.py```
+## .env
+* copy .env.default to .env
+
+
+## Obfuscasted code
+* using https://pyarmor.readthedocs.io/en/latest/ 
+* how to obfuscate code
+```
+pip install pyarmor
+pyarmor init --entry=start.py
+pyarmor build
+```
+
+## Run obfuscated code
+* run application by obfuscate 
+```
+cd obfuscate
+start.py
+```
 
