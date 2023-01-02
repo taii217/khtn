@@ -1,7 +1,7 @@
 # security_and_recovery_final_semester
 ## Thành Viên
 * 19120641 : Nguyễn Đức Phát Tài
-* 19120694 : Phan Lý Châu Trinh
+* 19120694 : Châu Lý Phương Trinh
 
 ## Đề Tài
 * 
